@@ -13,3 +13,15 @@ attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap
 
 // Then we add our 'graymap' tile layer to the map.
 streets.addTo(map);
+
+// Coordinates for each point to be used in the line.
+let line = [
+    [33.9416, -118.4085],
+    [37.6213, -122.3790]
+  ];
+
+// Create a polyline using the line coordinates and make the line red.
+L.polyline(line, {
+    color: "red"
+  }).addTo(map);
+  
