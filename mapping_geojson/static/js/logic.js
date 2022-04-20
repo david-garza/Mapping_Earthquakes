@@ -32,4 +32,11 @@ attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap
 streets.addTo(map);
 
 // Grabbing our GeoJSON data.
-L.geoJSON(sanFranAirport).addTo(map);
+L.geoJSON(sanFranAirport, {
+    // We turn each feature into a marker on the map.
+    pointToLayer: function(feature, latlng) {
+      console.log(feature);
+      return L.marker(latlng);
+    }
+
+  }).addTo(map);
