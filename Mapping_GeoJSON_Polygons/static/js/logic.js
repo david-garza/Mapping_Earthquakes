@@ -29,3 +29,10 @@ let map = L.map('mapid',{
 
 // Pass our map layers into our layers control and add the layers control to the map.
 L.control.layers(baseMaps).addTo(map);
+
+// Accessing the Toronto neighborhoods GeoJSON URL.
+let torontoHoods = "https://raw.githubusercontent.com/david-garza/Mapping_Earthquakes/Mapping_GeoJSON_Polygons/torontoNeighborhoods.json";
+
+d3.json(torontoHoods).then(data => {
+  L.geoJSON(data).addTo(map);
+})
