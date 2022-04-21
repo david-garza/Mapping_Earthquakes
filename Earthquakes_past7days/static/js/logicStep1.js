@@ -26,4 +26,12 @@ let map = L.map('mapid',{
 })
 
 // Pass to control to map
-L.control.layers(baseMaps).addto(map);
+L.control.layers(baseMaps).addTo(map);
+
+// Earthquake data URL
+var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
+
+// Plot the data to the map
+d3.json(url).then(function(data) {
+    L.geoJSON(data).addTo(map);
+});
