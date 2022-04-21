@@ -33,6 +33,17 @@ L.control.layers(baseMaps).addTo(map);
 // Accessing the Toronto neighborhoods GeoJSON URL.
 let torontoHoods = "https://raw.githubusercontent.com/david-garza/Mapping_Earthquakes/Mapping_GeoJSON_Polygons/torontoNeighborhoods.json";
 
+let style = {
+  fillColor: "yellow",
+  weight: 1
+}
+
 d3.json(torontoHoods).then(data => {
-  L.geoJSON(data).addTo(map);
+ 
+  L.geoJSON(data, {
+    style: style,
+    onEachFeature: (feature, layer) => {
+      layer.bindPopup("<h3>Neighborhood: "+feature.properties.AREA_NAME+"</h3>");
+    }
+  }).addTo(map);
 })
