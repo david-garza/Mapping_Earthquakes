@@ -1,3 +1,3 @@
-# Mapping GeoJson
+# Mapping GeoJson Polygons
 
-Practice in mapping geojson data.
+Practice in mapping geojson polygons.
