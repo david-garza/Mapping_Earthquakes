@@ -33,13 +33,18 @@ L.control.layers(baseMaps).addTo(map);
 // Accessing the Toronto airline routes GeoJSON URL.
 let torontoData = "https://raw.githubusercontent.com/david-garza/Mapping_Earthquakes/Mapping_GeoJSON_Linestrings/torontoRoutes.json";
 
+// Create a style for the lines.
+let myStyle = {
+  color: "#ffffa1",
+  weight: 2
+}
+
 // Grabbing our GeoJSON data.
 d3.json(torontoData).then(function(data) {
   console.log(data);
   // Creating a GeoJSON layer with the retrieved data.
   L.geoJSON(data, {
-    color: "yellow",
-    weight: 2,
+    style: myStyle,
     onEachFeature: (feature,layer) =>{
       layer.bindPopup("<h2>Airline: "+feature.properties.airline+"</h2>"
       +"<hr>"
