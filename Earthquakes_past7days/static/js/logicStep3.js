@@ -68,7 +68,7 @@ d3.json(url).then(function(data) {
         }
         return "#98ee00";
     }
-    
+
     // This function determines the radius of the earthquake marker based on its magnitude.
     // Earthquakes with a magnitude of 0 will be plotted with a radius of 1.
     function getRadius(magnitude) {
@@ -86,6 +86,12 @@ d3.json(url).then(function(data) {
             return L.circleMarker(latlng);
         },
 
-        style: styleInfo
+        style: styleInfo,
+
+        // We create a popup for each circleMarker to display the magnitude and
+        //  location of the earthquake after the marker has been created and styled.
+        onEachFeature: function(feature, layer) {
+            layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
+        }
     }).addTo(map);
 });
